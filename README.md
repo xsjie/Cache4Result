@@ -36,18 +36,18 @@ spring config
 ------------------------------------------
 ### 
 	public class UserServiceImpl implements UserService {
-	...
-
-	/**
-	*  cacheKeyName cache的key的名称
-	*  liveSecond 缓存的存活时间 0 或不写表示 默认ehcache.xml 中的配置
-	*
-	* @param department 
-	* @result list
-	*/
-
-	@Cache4Query(cacheKeyName = "findUsersByDepartment_${department.id}_${department.name}" , liveSecond = 60*60 )
-	public List<User> findUsersByDepartment(Department department){
 		...
+
+		/**
+		*  cacheKeyName cache的key的名称
+		*  liveSecond 缓存的存活时间 0 或不写表示 默认ehcache.xml 中的配置
+		*
+		* @param department 
+		* @result list
+		*/
+
+		@Cache4Query(cacheKeyName = "findUsersByDepartment_${department.id}_${department.name}" , liveSecond = 60*60 )
+		public List<User> findUsersByDepartment(Department department){
+			...
+		}
 	}
-}
