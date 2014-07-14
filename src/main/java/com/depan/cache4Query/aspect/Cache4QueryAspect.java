@@ -23,7 +23,6 @@ import java.util.regex.Pattern;
  */
 public class Cache4QueryAspect {
     private Cache cache;
-    @Around("@annotation(com.cache4Query.cache4Query.annotation.Cache4Query)")
     public Object doAround(ProceedingJoinPoint jp) throws Throwable {
         Object result;
         MethodSignature jpo = (MethodSignature) jp.getSignature();
