@@ -4,7 +4,23 @@ Cache4Query 是为查询做缓存的小工具
 ---------------------------------------
 spring config
 ---------------------------------------
+###  ehcache.xml
+	<cache name="cache4Query"
+           maxElementsInMemory="10"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="10000"
+           diskPersistent="true"
+           overflowToDisk="true"
+            />
 ### 	
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"/>
+    <!-- 配置一个简单的缓存工厂bean对象 -->
+    <bean id="simpleCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheManager" ref="cacheManager"/>
+        <!-- 使用缓存 关联ehcache.xml中的缓存配置 -->
+        <property name="cacheName" value="cache4Query"/>
+    </bean>
 	<bean id="cache4QueryAspect" class="com.depan.cache4Query.aspect.Cache4QueryAspect"></bean> 
      
      <aop:config>
