@@ -1,4 +1,4 @@
-package com.depan.cache4Query.util;
+package com.depan.cache4Result.util;
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;

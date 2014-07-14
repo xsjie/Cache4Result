@@ -1,12 +1,11 @@
-package com.depan.cache4Query.aspect;
-import com.depan.cache4Query.annotation.Cache4Query;
-import com.depan.cache4Query.util.MethodParamNamesScaner;
+package com.depan.cache4Result.aspect;
+import com.depan.cache4Result.annotation.Cache4Result;
+import com.depan.cache4Result.util.MethodParamNamesScaner;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.Element;
 import ognl.Ognl;
 import ognl.OgnlException;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.reflect.MethodSignature;
 
 import java.io.Serializable;
@@ -21,12 +20,12 @@ import java.util.regex.Pattern;
  * Created by zhangdengpan
  * cache manager!.
  */
-public class Cache4QueryAspect {
+public class Cache4ResultAspect {
     private Cache cache;
     public Object doAround(ProceedingJoinPoint jp) throws Throwable {
         Object result;
         MethodSignature jpo = (MethodSignature) jp.getSignature();
-        Cache4Query annotation = jpo.getMethod().getAnnotation(Cache4Query.class);//获取方法上的annotation实例
+        Cache4Result annotation = jpo.getMethod().getAnnotation(Cache4Result.class);//获取方法上的annotation实例
         String cacheKeyName = annotation.cacheKeyName();//从实例中获得注解中的cacheKeyName属性
         int liveSecond = annotation.liveSecond();//缓存多长时间
         String cacheKey = getCacheKey(cacheKeyName, jp);//构造一个缓存key的名字，并利用ognl解析${}中的方法参数
