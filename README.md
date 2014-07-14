@@ -21,7 +21,9 @@ spring config
         <!-- 使用缓存 关联ehcache.xml中的缓存配置 -->
         <property name="cacheName" value="cache4Query"/>
     </bean>
-	<bean id="cache4QueryAspect" class="com.depan.cache4Query.aspect.Cache4QueryAspect"></bean> 
+	<bean id="cache4QueryAspect" class="com.depan.cache4Query.aspect.Cache4QueryAspect">
+		<property name="cache" ref="simpleCache"/>
+	</bean> 
      
      <aop:config>
         <aop:aspect id="myaspectj" ref="cache4QueryAspect">
